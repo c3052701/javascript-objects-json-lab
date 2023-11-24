@@ -1,19 +1,23 @@
+// IIFE immediately invoked function expression
 (function(){ 
 //codes starts here
 console.info("Hello JS"); 
 const myNode = document.createElement("div");
 const digitalclock = document.getElementById("digitalClock");
 digitalClock.appendChild(myNode);
-myNode.innerHTML = "Welcome";
+// myNode.innerHTML = "Welcome"; (it was a test)
 
+// get time
+
+const updateTime = function() {
+    
 const myDate = new Date();
-console.dir(myDate);
+myNode.innerHTML = myDate.toLocaleTimeString();
+    
+};
 
-// show only hours, minutes and seconds
-myNode.innerHTML = myDate.toLocaleTimeString([], 
-{ hour: "2-digit", minute: "2-digit", second: "2-digit" });
-
-
+setInterval(updateTime, 1000);
+updateTime();
 
 // codes ends here
 })();
